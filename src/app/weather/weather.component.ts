@@ -43,8 +43,7 @@ export class WeatherComponent implements OnInit {
   }
 
   getData(): void {
-    const realtimeGauge = '/fileadmin/cam/wetter/weather.php';
-    //const realtimeGauge = './assets/data.json';
+    const realtimeGauge = 'https://www.wattnboardsport.de/fileadmin/cam/wetter/MBrealtimegauges.json';
     this.http.get(realtimeGauge, {}).subscribe((data: Weather) => {
       this.gauge = data;
     },

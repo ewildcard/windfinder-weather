@@ -203,11 +203,13 @@ body {
 
 .date-day {
   display: block;
+  text-shadow: -1px 2px 1px hsl(0deg 0% 52%);
 }
 
 .location {
   display: inline-block;
   margin-top: 10px;
+  text-shadow: -1px 2px 1px hsl(0deg 0% 52%);
 }
 
 .location-icon {
