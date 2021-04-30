@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Weather } from '../weather';
+import { Weather } from './weather';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Component({
-  selector: 'app-weather',
+  selector: 'wbs-weather-app',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
