@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div class="weather-side" (click)="goToLink('https://www.wattnboardsport.de/fileadmin/cam/Wremen_Cam.jpg')">
+    <div class="weather-gradient"></div>
+    <div class="date-container">
+      <h2 class="date-dayname"></h2><span class="date-day">{{ CurrentDate | date: 'dd.MM.YY' }} - {{gauge.date}}</span><span class="location">Wremen</span>
+    </div>
+    <div class="weather-container">
+      <h1 class="weather-temp">{{gauge.temp}}°{{gauge.tempunit}}</h1>
+    </div>
+  </div>
+  <div class="info-side">
+    <div class="today-info-container">
+      <div class="today-info">
+        <div class="humidity"> <span class="title">Luftfeuchtigkeit</span><span class="value">{{gauge.hum}} %</span>
+          <div class="clear"></div>
+        </div>
+        <div class="wind"> <span class="title">Wind</span><span class="value">{{gauge.wspeed}} kts</span>
+          <div class="clear"></div>
+        </div>
+        <div class="gusts"> <span class="title">Böen</span><span class="value">{{gauge.wgust}} kts</span>
+          <div class="clear"></div>
+        </div>
+        <div class="gusts"> <span class="title">Wind max.</span><span class="value">{{gauge.wgustTM}} kts um {{gauge.TwgustTM}} Uhr</span>
+          <div class="clear"></div>
+        </div>
+        <div class="winddir"> <span class="title">Windrichtung</span><span class="value">{{gauge.avgbearing}}° ({{gauge.domwinddir}})</span>
+          <div class="clear"></div>
+        </div>
+        <div class="press"> <span class="title">Luftdruck</span><span class="value">{{gauge.press}} hPa</span>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="compass">
+        <div class="direction">
+          <p>{{gauge.domwinddir}}<span>{{gauge.wspeed}} kts</span></p>
+        </div>
+        <div class="arrow {{gauge.domwinddir | lowercase}}"></div>
+      </div>
+    </div>
+  </div>
+</div>
