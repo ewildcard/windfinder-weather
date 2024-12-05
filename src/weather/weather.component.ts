@@ -84,30 +84,33 @@ export class WeatherComponent implements OnInit {
 	}
 
   getData(): void {
-    const params = 'https://www.wattnboardsport.de/fileadmin/cam/wetter/params.json';
+    const params = 'https://www.wattnboardsport.de/fileadmin/cam/wetter/alex.php';
 
-    this.http.get(params, {}).subscribe((data: Weather) => {
-      this.params.date = data[0];
-      this.params.time = data[1];
-      this.params.temp = parseFloat(data[2]);
-      this.params.hum = parseFloat(data[3]);
-      this.params.dew = parseFloat(data[4]);
-      this.params.press = parseFloat(data[10]);
-      this.params.windAvg = this.round(data[5] * 1.944);
-      this.params.windAvgDayMax = this.round(data[30] * 1.944);
-      this.params.windAvgDayMaxTime = data[31];
-      this.params.wind = this.round(data[6] * 1.944);
-      this.params.windMax = this.round(data[40] * 1.944);
-      this.params.windAvgDir = parseFloat(data[51]);
-      this.params.windDayMax = this.round(data[32] * 1.944);
-      this.params.windDayMaxTime = data[33].substring(8,10) + ':' + data[33].substring(10,12) + ' Uhr';
-      this.params.windDir = parseFloat(data[7]);
+    this.http.get(params, {}).subscribe(data => {
+      let test = JSON.stringify(data);
+      const obj = JSON.parse(test);
+      console.log(obj);
+      this.params.date = obj['date'];
+      this.params.time = obj['time'];
+      this.params.temp = parseFloat(obj['th0temp-act']);
+      this.params.hum = parseFloat(obj['th0hum-act']);
+      this.params.dew = parseFloat(obj['th0dew-act']);
+      this.params.press = parseFloat(obj['thb0press-act']);
+      this.params.windAvg = this.round(obj['wind0avgwind-act'] );
+      this.params.windAvgDayMax = this.round(obj['wind0avgwind-dmax']);
+      this.params.windAvgDayMaxTime = obj['wind0avgwind-dmaxtime'];
+      this.params.wind = this.round(obj['wind0wind-act']);
+      this.params.windMax = this.round(obj['wind0wind-dmax']);
+      this.params.windAvgDir = parseFloat(obj['wind0dir-val10']);
+      this.params.windDayMax = this.round(obj['wind0wind-dmax']);
+      //this.params.windDayMaxTime = data[33].substring(8,10) + ':' + data[33].substring(10,12) + ' Uhr';
+      this.params.windDir = parseFloat(obj['wind0dir-val10']);
       this.params.windBft = parseFloat(data[12]);
       this.params.tempDayMax = parseFloat(data[26]);
       this.params.tempDayMaxTime = data[27];
       this.params.tempDayMin = parseFloat(data[28]);
       this.params.tempDayMinTime = data[29];
-      this.params.windDomDir = this.deg2dir(data[51]);
+      this.params.windDomDir = this.deg2dir(obj['wind0dir-val10']);
       console.log(this.params);
     });
   }
