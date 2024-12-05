@@ -100,10 +100,10 @@ export class WeatherComponent implements OnInit {
       this.params.windAvgDayMax = this.round(obj['wind0avgwind-dmax']);
       this.params.windAvgDayMaxTime = obj['wind0avgwind-dmaxtime'];
       this.params.wind = this.round(obj['wind0wind-act']);
-      this.params.windMax = this.round(obj['wind0wind-dmax']);
+      this.params.windMax = this.round(obj['wind0wind-hmax']);
       this.params.windAvgDir = parseFloat(obj['wind0dir-val10']);
       this.params.windDayMax = this.round(obj['wind0wind-dmax']);
-      //this.params.windDayMaxTime = data[33].substring(8,10) + ':' + data[33].substring(10,12) + ' Uhr';
+      this.params.windDayMaxTime = obj['wind0wind-dmaxtime'].substring(8,10) + ':' + obj['wind0wind-dmaxtime'].substring(10,12) + ' Uhr';
       this.params.windDir = parseFloat(obj['wind0dir-val10']);
       this.params.windBft = parseFloat(data[12]);
       this.params.tempDayMax = parseFloat(data[26]);
